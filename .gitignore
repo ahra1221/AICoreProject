@@ -1,0 +1,25 @@
+# Environment and secrets
+.env
+.env.*
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ChromaDB generated data
+/chroma_db/*
+!/chroma_db/.gitkeep
+
+# Cached Wikipedia API results
+/data/.cache/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+.DS_Store
+Thumbs.db
