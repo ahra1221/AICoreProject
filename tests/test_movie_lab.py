@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import unittest
+import tempfile
+from dataclasses import replace
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -257,7 +259,11 @@ class CitationAndRetrievalTests(unittest.TestCase):
 
 class CollectorAndGraphTests(unittest.TestCase):
     def test_query_plan_always_contains_movie_and_movie_document(self) -> None:
-        settings = get_settings(environ={"GMS_KEY": "test-key"})
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        root = Path(temporary.name)
+        settings = replace(get_settings(environ={}), wiki_mode="snapshot", movies_path=root / "movies.json",
+                           wiki_dir=root / "wikipedia", chroma_dir=root / "index")
         movie = Movie(
             movie_id="157336",
             title="인터스텔라",
@@ -266,7 +272,7 @@ class CollectorAndGraphTests(unittest.TestCase):
         model = FakeModel(
             [
                 '{"queries":["블랙홀"]}',
-                '{"doc_keys":[]}',
+                '{"doc_keys":["157336:42"]}',
             ]
         )
         fake_indexer = FakeCandidateIndexer(
@@ -288,8 +294,8 @@ class CollectorAndGraphTests(unittest.TestCase):
         plan = DocumentCollector(settings, model, fake_indexer).prepare(
             movie, "블랙홀의 묘사는 어떤가요?"
         )
-        self.assertIn("인터스텔라", plan.queries)
-        self.assertIn("Interstellar", plan.queries)
+        self.assertIn("인터스텔라 영화", plan.queries)
+        self.assertIn("Interstellar film", plan.queries)
         self.assertEqual(plan.selected_doc_keys, ("157336:42",))
 
     def test_graph_executes_separate_retrieve_and_generate_nodes(self) -> None:

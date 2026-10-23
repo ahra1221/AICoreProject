@@ -112,6 +112,10 @@ class WikiDocument:
     related_movie: str = ""
     search_query: str = ""
     collected_at: str = ""
+    revision_id: str = ""
+    revision_timestamp: str = ""
+    license: str = "CC BY-SA 4.0"
+    license_url: str = "https://creativecommons.org/licenses/by-sa/4.0/"
 
     @classmethod
     def from_dict(cls, value: dict[str, Any], file_path: Path) -> WikiDocument:
@@ -130,6 +134,10 @@ class WikiDocument:
             related_movie=str(value.get("related_movie") or ""),
             search_query=str(value.get("search_query") or ""),
             collected_at=str(value.get("collected_at") or ""),
+            revision_id=str(value.get("revision_id") or ""),
+            revision_timestamp=str(value.get("revision_timestamp") or ""),
+            license=str(value.get("license") or "CC BY-SA 4.0"),
+            license_url=str(value.get("license_url") or "https://creativecommons.org/licenses/by-sa/4.0/"),
         )
 
 

@@ -1,0 +1,432 @@
+{
+  "mode": "offline_mock_models_and_embeddings",
+  "paid_api_calls": 0,
+  "live_llm_quality_verified": false,
+  "latency_is_not_live_service_latency": true,
+  "graph_nodes": [
+    "retrieve",
+    "generate"
+  ],
+  "model_calls": [
+    "P1",
+    "P2",
+    "generate",
+    "generate"
+  ],
+  "runs": [
+    {
+      "run": 1,
+      "seconds": 0.42038990010041744,
+      "collection": {
+        "cache_hit": false,
+        "mode": "snapshot",
+        "decisions": [
+          {
+            "doc_key": "157336:986156",
+            "title": "인터스텔라",
+            "adopt": true,
+            "reason": "모의 P2: 영화 또는 배경 개념 · 영화 제목과 연도 또는 감독 일치 확인",
+            "identity": "movie"
+          },
+          {
+            "doc_key": "157336:21878",
+            "title": "미국 항공 우주국",
+            "adopt": true,
+            "reason": "모의 P2: 영화 또는 배경 개념",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:95098",
+            "title": "블랙홀",
+            "adopt": true,
+            "reason": "모의 P2: 영화 또는 배경 개념",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:475498",
+            "title": "웜홀",
+            "adopt": true,
+            "reason": "모의 P2: 영화 또는 배경 개념",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:70",
+            "title": "일반 상대성이론",
+            "adopt": true,
+            "reason": "모의 P2: 영화 또는 배경 개념",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:151821",
+            "title": "제트추진연구소",
+            "adopt": false,
+            "reason": "질문당 채택 문서 상한",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:404764",
+            "title": "존 아치볼드 휠러",
+            "adopt": false,
+            "reason": "질문당 채택 문서 상한",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:20671",
+            "title": "중력",
+            "adopt": false,
+            "reason": "질문당 채택 문서 상한",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:174881",
+            "title": "초대질량 블랙홀",
+            "adopt": false,
+            "reason": "질문당 채택 문서 상한",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:44042",
+            "title": "크리스토퍼 놀란",
+            "adopt": false,
+            "reason": "질문당 채택 문서 상한",
+            "identity": "related"
+          }
+        ],
+        "api_requests": 0,
+        "seconds": 0.3963675999548286
+      },
+      "queries": [
+        "인터스텔라 2014 영화",
+        "Interstellar 2014 film",
+        "인터스텔라 블랙홀",
+        "웜홀"
+      ],
+      "answer": "모의 답변: 인터스텔라의 개봉연도는 2014년입니다. [근거 1]",
+      "used_evidence_numbers": [
+        1
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "title": "인터스텔라",
+          "url": "https://www.themoviedb.org/movie/157336",
+          "source": "영화 메타데이터 (TMDB)",
+          "source_type": "영화 메타데이터 (TMDB)",
+          "movie_id": "157336",
+          "page_id": "",
+          "doc_key": "",
+          "related_movie": "",
+          "license": "",
+          "license_url": "",
+          "revision_id": "",
+          "collected_at": ""
+        },
+        {
+          "number": 2,
+          "title": "일반 상대성이론",
+          "url": "https://ko.wikipedia.org/wiki/%EC%9D%BC%EB%B0%98_%EC%83%81%EB%8C%80%EC%84%B1%EC%9D%B4%EB%A1%A0",
+          "source": "한국어 위키백과",
+          "source_type": "한국어 위키백과",
+          "movie_id": "157336",
+          "page_id": "70",
+          "doc_key": "157336:70",
+          "related_movie": "인터스텔라",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "revision_id": "",
+          "collected_at": "2026-09-09",
+          "relevance": 0.5094118062143128
+        },
+        {
+          "number": 3,
+          "title": "블랙홀",
+          "url": "https://ko.wikipedia.org/wiki/%EB%B8%94%EB%9E%99%ED%99%80",
+          "source": "한국어 위키백과",
+          "source_type": "한국어 위키백과",
+          "movie_id": "157336",
+          "page_id": "95098",
+          "doc_key": "157336:95098",
+          "related_movie": "인터스텔라",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "revision_id": "",
+          "collected_at": "2026-09-09",
+          "relevance": 0.5052088965367363
+        },
+        {
+          "number": 4,
+          "title": "일반 상대성이론",
+          "url": "https://ko.wikipedia.org/wiki/%EC%9D%BC%EB%B0%98_%EC%83%81%EB%8C%80%EC%84%B1%EC%9D%B4%EB%A1%A0",
+          "source": "한국어 위키백과",
+          "source_type": "한국어 위키백과",
+          "movie_id": "157336",
+          "page_id": "70",
+          "doc_key": "157336:70",
+          "related_movie": "인터스텔라",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "revision_id": "",
+          "collected_at": "2026-09-09",
+          "relevance": 0.4940467790932295
+        },
+        {
+          "number": 5,
+          "title": "블랙홀",
+          "url": "https://ko.wikipedia.org/wiki/%EB%B8%94%EB%9E%99%ED%99%80",
+          "source": "한국어 위키백과",
+          "source_type": "한국어 위키백과",
+          "movie_id": "157336",
+          "page_id": "95098",
+          "doc_key": "157336:95098",
+          "related_movie": "인터스텔라",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "revision_id": "",
+          "collected_at": "2026-09-09",
+          "relevance": 0.4877331049037986
+        },
+        {
+          "number": 6,
+          "title": "일반 상대성이론",
+          "url": "https://ko.wikipedia.org/wiki/%EC%9D%BC%EB%B0%98_%EC%83%81%EB%8C%80%EC%84%B1%EC%9D%B4%EB%A1%A0",
+          "source": "한국어 위키백과",
+          "source_type": "한국어 위키백과",
+          "movie_id": "157336",
+          "page_id": "70",
+          "doc_key": "157336:70",
+          "related_movie": "인터스텔라",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "revision_id": "",
+          "collected_at": "2026-09-09",
+          "relevance": 0.4846336959387774
+        }
+      ]
+    },
+    {
+      "run": 2,
+      "seconds": 0.03697949997149408,
+      "collection": {
+        "cache_hit": true,
+        "mode": "snapshot",
+        "decisions": [
+          {
+            "doc_key": "157336:986156",
+            "title": "인터스텔라",
+            "adopt": true,
+            "reason": "모의 P2: 영화 또는 배경 개념 · 영화 제목과 연도 또는 감독 일치 확인",
+            "identity": "movie"
+          },
+          {
+            "doc_key": "157336:21878",
+            "title": "미국 항공 우주국",
+            "adopt": true,
+            "reason": "모의 P2: 영화 또는 배경 개념",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:95098",
+            "title": "블랙홀",
+            "adopt": true,
+            "reason": "모의 P2: 영화 또는 배경 개념",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:475498",
+            "title": "웜홀",
+            "adopt": true,
+            "reason": "모의 P2: 영화 또는 배경 개념",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:70",
+            "title": "일반 상대성이론",
+            "adopt": true,
+            "reason": "모의 P2: 영화 또는 배경 개념",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:151821",
+            "title": "제트추진연구소",
+            "adopt": false,
+            "reason": "질문당 채택 문서 상한",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:404764",
+            "title": "존 아치볼드 휠러",
+            "adopt": false,
+            "reason": "질문당 채택 문서 상한",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:20671",
+            "title": "중력",
+            "adopt": false,
+            "reason": "질문당 채택 문서 상한",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:174881",
+            "title": "초대질량 블랙홀",
+            "adopt": false,
+            "reason": "질문당 채택 문서 상한",
+            "identity": "related"
+          },
+          {
+            "doc_key": "157336:44042",
+            "title": "크리스토퍼 놀란",
+            "adopt": false,
+            "reason": "질문당 채택 문서 상한",
+            "identity": "related"
+          }
+        ],
+        "api_requests": 0,
+        "seconds": 0.017897700075991452
+      },
+      "queries": [
+        "인터스텔라 2014 영화",
+        "Interstellar 2014 film",
+        "인터스텔라 블랙홀",
+        "웜홀"
+      ],
+      "answer": "모의 답변: 인터스텔라의 개봉연도는 2014년입니다. [근거 1]",
+      "used_evidence_numbers": [
+        1
+      ],
+      "sources": [
+        {
+          "number": 1,
+          "title": "인터스텔라",
+          "url": "https://www.themoviedb.org/movie/157336",
+          "source": "영화 메타데이터 (TMDB)",
+          "source_type": "영화 메타데이터 (TMDB)",
+          "movie_id": "157336",
+          "page_id": "",
+          "doc_key": "",
+          "related_movie": "",
+          "license": "",
+          "license_url": "",
+          "revision_id": "",
+          "collected_at": ""
+        },
+        {
+          "number": 2,
+          "title": "일반 상대성이론",
+          "url": "https://ko.wikipedia.org/wiki/%EC%9D%BC%EB%B0%98_%EC%83%81%EB%8C%80%EC%84%B1%EC%9D%B4%EB%A1%A0",
+          "source": "한국어 위키백과",
+          "source_type": "한국어 위키백과",
+          "movie_id": "157336",
+          "page_id": "70",
+          "doc_key": "157336:70",
+          "related_movie": "인터스텔라",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "revision_id": "",
+          "collected_at": "2026-09-09",
+          "relevance": 0.5094118062143128
+        },
+        {
+          "number": 3,
+          "title": "블랙홀",
+          "url": "https://ko.wikipedia.org/wiki/%EB%B8%94%EB%9E%99%ED%99%80",
+          "source": "한국어 위키백과",
+          "source_type": "한국어 위키백과",
+          "movie_id": "157336",
+          "page_id": "95098",
+          "doc_key": "157336:95098",
+          "related_movie": "인터스텔라",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "revision_id": "",
+          "collected_at": "2026-09-09",
+          "relevance": 0.5052088965367363
+        },
+        {
+          "number": 4,
+          "title": "일반 상대성이론",
+          "url": "https://ko.wikipedia.org/wiki/%EC%9D%BC%EB%B0%98_%EC%83%81%EB%8C%80%EC%84%B1%EC%9D%B4%EB%A1%A0",
+          "source": "한국어 위키백과",
+          "source_type": "한국어 위키백과",
+          "movie_id": "157336",
+          "page_id": "70",
+          "doc_key": "157336:70",
+          "related_movie": "인터스텔라",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "revision_id": "",
+          "collected_at": "2026-09-09",
+          "relevance": 0.4940467790932295
+        },
+        {
+          "number": 5,
+          "title": "블랙홀",
+          "url": "https://ko.wikipedia.org/wiki/%EB%B8%94%EB%9E%99%ED%99%80",
+          "source": "한국어 위키백과",
+          "source_type": "한국어 위키백과",
+          "movie_id": "157336",
+          "page_id": "95098",
+          "doc_key": "157336:95098",
+          "related_movie": "인터스텔라",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "revision_id": "",
+          "collected_at": "2026-09-09",
+          "relevance": 0.4877331049037986
+        },
+        {
+          "number": 6,
+          "title": "일반 상대성이론",
+          "url": "https://ko.wikipedia.org/wiki/%EC%9D%BC%EB%B0%98_%EC%83%81%EB%8C%80%EC%84%B1%EC%9D%B4%EB%A1%A0",
+          "source": "한국어 위키백과",
+          "source_type": "한국어 위키백과",
+          "movie_id": "157336",
+          "page_id": "70",
+          "doc_key": "157336:70",
+          "related_movie": "인터스텔라",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "revision_id": "",
+          "collected_at": "2026-09-09",
+          "relevance": 0.4846336959387774
+        }
+      ]
+    }
+  ],
+  "top_k_comparison": {
+    "1": [
+      {
+        "number": 1,
+        "title": "인터스텔라",
+        "doc_key": ""
+      },
+      {
+        "number": 2,
+        "title": "일반 상대성이론",
+        "doc_key": "157336:70"
+      }
+    ],
+    "3": [
+      {
+        "number": 1,
+        "title": "인터스텔라",
+        "doc_key": ""
+      },
+      {
+        "number": 2,
+        "title": "일반 상대성이론",
+        "doc_key": "157336:70"
+      },
+      {
+        "number": 3,
+        "title": "블랙홀",
+        "doc_key": "157336:95098"
+      },
+      {
+        "number": 4,
+        "title": "일반 상대성이론",
+        "doc_key": "157336:70"
+      }
+    ]
+  }
+}

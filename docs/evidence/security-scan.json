@@ -1,0 +1,6 @@
+{
+  "files_scanned": 41,
+  "matching_paths": [],
+  "env_example_values_empty": true,
+  "scope": "source/docs known key formats; does not guarantee detection of every secret format"
+}

@@ -1,0 +1,16 @@
+{
+  "url": "http://127.0.0.1:8521",
+  "browser": "dedicated background IAB tab",
+  "observed": [
+    "missing index guidance",
+    "missing key guidance",
+    "keyless discovery request blocked",
+    "source and license details"
+  ],
+  "paid_api_calls": 0,
+  "other_tabs_modified": false,
+  "screenshots": [
+    "13_empty_index.jpg",
+    "13_missing_key.jpg"
+  ]
+}

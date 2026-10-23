@@ -29,6 +29,16 @@ logger = logging.getLogger(__name__)
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
+        "--metadata-only",
+        action="store_true",
+        help="Index movie metadata only; collect external pages per question through Wikipedia/P1/P2.",
+    )
+    parser.add_argument(
+        "--allow-paid-api",
+        action="store_true",
+        help="Explicitly allow this command's configured GMS embedding calls.",
+    )
+    parser.add_argument(
         "--test-mode",
         action="store_true",
         help="Index only a small sample and never run a full-corpus index automatically.",
@@ -76,10 +86,10 @@ def main() -> None:
     args = parse_args()
     settings = get_settings()
     movies = load_movies(settings.movies_path)
-    wiki_documents = load_wiki_documents(settings.wiki_dir)
+    wiki_documents = [] if args.metadata_only else load_wiki_documents(settings.wiki_dir)
     if len(movies) != 964:
         raise ValueError(f"Expected 964 movies, found {len(movies)} in {settings.movies_path}.")
-    if not wiki_documents:
+    if not wiki_documents and not args.metadata_only:
         raise ValueError(f"No Wikipedia documents found in {settings.wiki_dir}.")
 
     splitter = RecursiveCharacterTextSplitter(
@@ -93,6 +103,19 @@ def main() -> None:
         print(f"Full index estimate: movies={len(movies)}, wiki_documents={len(wiki_documents)}, wiki_chunks={chunks}")
         print(f"Embedding inputs on a clean index: {len(movies) + chunks}")
         print("No API request was sent and no index was written.")
+        return
+
+    if not args.allow_paid_api:
+        raise ValueError("Embedding calls require --allow-paid-api and this project's GMS_KEY. Use --estimate-only for a free estimate.")
+    if args.metadata_only:
+        selected_movies = movies[:args.test_movies] if args.test_mode else movies
+        if args.test_mode and not 5 <= args.test_movies <= 100:
+            raise ValueError("Test-mode movie limit must be 5-100.")
+        embeddings, _ = check_embedding_connection(settings)
+        indexer = MovieIndexer(settings, embeddings=embeddings)
+        report = indexer.index_movies(selected_movies, prune=False)
+        print(f"Metadata-only index: {report}; external_docs={indexer.counts()['external_docs']}")
+        print("Wikipedia bodies will be collected after P2 accepts pages when a question is submitted.")
         return
 
     if args.test_mode:
@@ -139,7 +162,7 @@ def main() -> None:
     before = indexer.counts()
     logger.info("Embedding model preflight passed with %d dimensions.", dimensions)
     movie_report = indexer.index_movies(movies)
-    wiki_report = indexer.index_external_documents(wiki_documents)
+    wiki_report = indexer.index_external_documents(wiki_documents, prune=False)
     logger.info(
         "movie_meta: %d -> %d (%d added/updated, %d removed)",
         movie_report.before,

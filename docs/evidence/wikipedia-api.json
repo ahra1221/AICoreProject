@@ -1,0 +1,55 @@
+{
+  "recorded_at": "2026-10-23T05:57:42.483008+00:00",
+  "mode": "live_public_api",
+  "movie_id": "157336",
+  "movie_title": "인터스텔라",
+  "year": 2014,
+  "paid_api_calls": 0,
+  "selection": "deterministic identity smoke; P1/P2 LLM not executed",
+  "query": "인터스텔라 2014 영화",
+  "candidates": [
+    {
+      "title": "인터스텔라",
+      "page_id": "986156",
+      "identity": "movie"
+    },
+    {
+      "title": "대한민국의 영화 흥행 기록",
+      "page_id": "33145",
+      "identity": "related"
+    },
+    {
+      "title": "크리스토퍼 놀란",
+      "page_id": "44042",
+      "identity": "related"
+    },
+    {
+      "title": "감우성",
+      "page_id": "54417",
+      "identity": "related"
+    },
+    {
+      "title": "하정우",
+      "page_id": "176532",
+      "identity": "related"
+    }
+  ],
+  "success": true,
+  "document": {
+    "page_id": "986156",
+    "title": "인터스텔라",
+    "url": "https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%84%B0%EC%8A%A4%ED%85%94%EB%9D%BC",
+    "source": "한국어 위키백과",
+    "revision_id": "42404564",
+    "revision_timestamp": "2026-08-30T05:03:09Z",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "collected_at": "2026-10-23T05:57:44.614583+00:00"
+  },
+  "body_characters": 6352,
+  "repeat_added_http_requests": 0,
+  "repeat_equal": true,
+  "http_requests": 2,
+  "http_cache_hits": 2,
+  "duration_seconds": 2.1382326000602916
+}

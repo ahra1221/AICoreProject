@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from typing import Iterable
 
 from langchain_chroma import Chroma
+from chromadb.config import Settings as ChromaSettings
 from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -16,6 +17,11 @@ from src.config import Settings, require_api_key
 from src.data_loader import Movie, WikiDocument
 
 logger = logging.getLogger(__name__)
+
+
+def distance_to_relevance(distance: float) -> float:
+    """Bounded monotonic distance score; a ranking score, not a probability."""
+    return 1.0 / (1.0 + max(0.0, float(distance)))
 
 
 @dataclass(frozen=True)
@@ -62,6 +68,10 @@ def create_external_chunks(
                 "related_movie": source.related_movie,
                 "search_query": source.search_query,
                 "collected_at": source.collected_at,
+                "revision_id": source.revision_id,
+                "revision_timestamp": source.revision_timestamp,
+                "license": source.license,
+                "license_url": source.license_url,
                 "chunk_index": chunk_index,
                 "content_hash": _content_hash(chunk),
             }
@@ -127,11 +137,15 @@ class MovieIndexer:
             collection_name="movie_meta",
             embedding_function=embedding_function,
             persist_directory=str(settings.chroma_dir),
+            client_settings=ChromaSettings(anonymized_telemetry=False),
+            relevance_score_fn=distance_to_relevance,
         )
         self.external_collection = Chroma(
             collection_name="external_docs",
             embedding_function=embedding_function,
             persist_directory=str(settings.chroma_dir),
+            client_settings=ChromaSettings(anonymized_telemetry=False),
+            relevance_score_fn=distance_to_relevance,
         )
         self.splitter = RecursiveCharacterTextSplitter(
             chunk_size=settings.chunk_size,
@@ -144,8 +158,8 @@ class MovieIndexer:
         return self.embeddings is not None
 
     def require_embeddings(self) -> None:
-        require_api_key(self.settings)
         if self.embeddings is None:
+            require_api_key(self.settings)
             raise ValueError("An embedding model is not configured.")
 
     def counts(self) -> dict[str, int]:
@@ -177,7 +191,20 @@ class MovieIndexer:
     ) -> IndexReport:
         self.require_embeddings()
         ids, documents = create_external_chunks(source_documents, self.splitter)
-        return self._upsert(self.external_collection, ids, documents, prune=prune)
+        report = self._upsert(self.external_collection, ids, documents, prune=prune)
+        if not prune and documents:
+            # A shorter re-collected page must not leave obsolete tail chunks.
+            keys = {doc.metadata["doc_key"] for doc in documents}
+            existing = self.external_collection.get(include=["metadatas"])
+            wanted = set(ids)
+            stale = [item_id for item_id, meta in zip(existing["ids"], existing["metadatas"], strict=True)
+                     if meta.get("doc_key") in keys and item_id not in wanted]
+            if stale:
+                self.external_collection.delete(ids=stale)
+                report = IndexReport(report.collection, report.before,
+                                     self.external_collection._collection.count(),
+                                     report.added_or_updated, len(stale))
+        return report
 
     def _upsert(
         self,
@@ -197,11 +224,11 @@ class MovieIndexer:
             for document_id, document in zip(ids, documents, strict=True)
             if existing_metadata.get(document_id, {}).get("content_hash")
             != document.metadata["content_hash"]
+            or any(existing_metadata.get(document_id, {}).get(key) != value
+                   for key, value in document.metadata.items() if key != "collected_at")
         ]
         stale = [document_id for document_id in existing_ids if prune and document_id not in wanted]
         before = len(existing_ids)
-        if stale:
-            collection.delete(ids=stale)
         batch_size = 128
         for start in range(0, len(changed_documents), batch_size):
             batch = changed_documents[start : start + batch_size]
@@ -215,6 +242,8 @@ class MovieIndexer:
                 min(start + batch_size, len(changed_documents)),
                 len(changed_documents),
             )
+        if stale:
+            collection.delete(ids=stale)
         after = collection._collection.count()
         logger.info(
             "%s index updated: %d -> %d documents (%d changed, %d removed)",

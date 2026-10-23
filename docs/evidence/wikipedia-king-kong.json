@@ -1,0 +1,55 @@
+{
+  "recorded_at": "2026-10-23T06:08:17.648503+00:00",
+  "mode": "live_public_api",
+  "movie_id": "254",
+  "movie_title": "킹콩",
+  "year": 2005,
+  "paid_api_calls": 0,
+  "selection": "deterministic identity smoke; P1/P2 LLM not executed",
+  "query": "킹콩 2005 영화",
+  "candidates": [
+    {
+      "title": "킹콩 (2005년 영화)",
+      "page_id": "457431",
+      "identity": "movie"
+    },
+    {
+      "title": "킹콩",
+      "page_id": "54482",
+      "identity": "reject"
+    },
+    {
+      "title": "전도연",
+      "page_id": "56154",
+      "identity": "related"
+    },
+    {
+      "title": "카카오엠",
+      "page_id": "155937",
+      "identity": "related"
+    },
+    {
+      "title": "이병헌",
+      "page_id": "8617",
+      "identity": "related"
+    }
+  ],
+  "success": true,
+  "document": {
+    "page_id": "457431",
+    "title": "킹콩 (2005년 영화)",
+    "url": "https://ko.wikipedia.org/wiki/%ED%82%B9%EC%BD%A9_(2005%EB%85%84_%EC%98%81%ED%99%94)",
+    "source": "한국어 위키백과",
+    "revision_id": "42521469",
+    "revision_timestamp": "2026-09-19T19:51:54Z",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "collected_at": "2026-10-23T06:08:19.742372+00:00"
+  },
+  "body_characters": 1990,
+  "repeat_added_http_requests": 0,
+  "repeat_equal": true,
+  "http_requests": 2,
+  "http_cache_hits": 2,
+  "duration_seconds": 2.1002703999402
+}

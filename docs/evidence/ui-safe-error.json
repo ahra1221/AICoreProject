@@ -1,0 +1,7 @@
+{
+  "screen_errors": [
+    "데이터 또는 색인을 열 수 없습니다. .env의 경로·숫자 설정과 데이터 파일을 확인하세요."
+  ],
+  "private_marker_visible": false,
+  "uncaught_exceptions": 0
+}

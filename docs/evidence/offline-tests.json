@@ -1,0 +1,11 @@
+{
+  "recorded_at": "2026-10-23T06:11:47.604239+00:00",
+  "mode": "offline_mock",
+  "network": "socket.connect forbidden",
+  "paid_api_calls": 0,
+  "tests": 37,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "duration_seconds": 8.054623599979095
+}

@@ -23,9 +23,9 @@ def cited_sources(
         if value.strip().isdigit()
     }
     return [
-        (number, source)
+        (int(source.get("number", number)), source)
         for number, source in enumerate(sources, start=1)
-        if number in cited_numbers
+        if int(source.get("number", number)) in cited_numbers
     ]
 
 
@@ -36,7 +36,7 @@ def _source_from_document(
     return {
         "number": number,
         "title": metadata.get("title", ""),
-        "url": metadata.get("url", ""),
+        "url": metadata.get("url") or metadata.get("tmdb_url", ""),
         "source": metadata.get("source", source_type),
         "source_type": source_type,
         "movie_id": str(metadata.get("movie_id", "")),
@@ -44,6 +44,10 @@ def _source_from_document(
         "doc_key": str(metadata.get("doc_key", "")),
         "related_movie": metadata.get("related_movie", ""),
         "text": document.page_content,
+        "license": metadata.get("license", ""),
+        "license_url": metadata.get("license_url", ""),
+        "revision_id": metadata.get("revision_id", ""),
+        "collected_at": metadata.get("collected_at", ""),
     }
 
 
@@ -65,7 +69,7 @@ class EvidenceRetriever:
                 f"Movie {movie.movie_id} is not indexed. Run scripts/build_index.py first."
             )
         results = [_source_from_document(movie_document, 1, "영화 메타데이터 (TMDB)")]
-        seen_ids = {movie.movie_id}
+        ranked: dict[str, tuple[Document, float]] = {}
 
         if not selected_doc_keys:
             return results
@@ -79,19 +83,16 @@ class EvidenceRetriever:
             for document, relevance in matches:
                 if relevance < min_relevance:
                     continue
+                if (str(document.metadata.get("movie_id")) != movie.movie_id
+                    or document.metadata.get("doc_key") not in selected_doc_keys):
+                    continue
                 document_id = str(document.metadata.get("doc_key", "")) + ":" + str(
                     document.metadata.get("chunk_index", "")
                 )
-                if document_id in seen_ids:
-                    continue
-                seen_ids.add(document_id)
-                results.append(
-                    _source_from_document(
-                        document, len(results) + 1, "한국어 위키백과"
-                    )
-                )
-                if len(results) - 1 >= top_k:
-                    break
-            if len(results) - 1 >= top_k:
-                break
+                if document_id not in ranked or relevance > ranked[document_id][1]:
+                    ranked[document_id] = (document, relevance)
+        for document, relevance in sorted(ranked.values(), key=lambda item: item[1], reverse=True)[:top_k]:
+            source = _source_from_document(document, len(results) + 1, "한국어 위키백과")
+            source["relevance"] = relevance
+            results.append(source)
         return results

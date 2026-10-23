@@ -1,0 +1,9 @@
+{
+  "warnings": [
+    "색인 데이터가 없습니다. `python scripts/build_index.py`를 실행하세요."
+  ],
+  "infos": [
+    "LLM 및 벡터 검색을 사용하려면 `.env`에 GMS_KEY를 설정하세요."
+  ],
+  "uncaught_exceptions": 0
+}
