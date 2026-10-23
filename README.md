@@ -99,6 +99,21 @@ Get-NetTCPConnection -LocalPort 8521 -State Listen -ErrorAction SilentlyContinue
 
 출력에 근거가 전혀 없거나 생성한 인용 번호가 잘못되면 확인 불가 답변으로 바꿉니다. 출처가 있더라도 의미상 적절한 인용인지 판단하는 수동 검증은 필요합니다. 배경 과학 문서가 영화 장면 자체를 증명하지는 않습니다.
 
+## 실제 앱 화면
+
+실제 학교 PC의 영화 앱 `8521`에서 확인한 **캡처 4장(기존 2장 + 추가 2장)**을 [화면 증빙 문서](docs/screenshots.md)에 모았습니다. [테스트 결과표](docs/test-results.md), [요구사항 대조표](docs/requirements-matrix.csv), [셀프 체크리스트](docs/checklist-self.xlsx)에도 연결했습니다.
+
+| 캡처 | 확인 범위 |
+|---|---|
+| [색인 없음 안내](docs/evidence/13_empty_index.jpg) | 실제 초기 화면·색인 0건 |
+| [키 없음 안내](docs/evidence/13_missing_key.jpg) | 조건 탐색 요청이 키 없음으로 차단됨 |
+| [출처·이용 조건](docs/evidence/24_sources_license.jpg) | TMDB·위키백과·CC BY-SA 4.0 표시 |
+| [Top-k 설정 3](docs/evidence/06_top_k3.jpg) | 설정값 5→3 변경, 촬영 후 5 복구 |
+
+![실제 영화 앱의 출처와 이용 조건 화면](docs/evidence/24_sources_license.jpg)
+
+키·색인이 없는 실제 화면입니다. 유료 API는 호출하지 않았으며 답변 성공·사실 검증·진행 화면은 미확인입니다. Top-k 캡처는 설정 조작만 보여 주며 실제 검색 결과 비교와 구분합니다.
+
 ## 주요 파일
 
 | 파일 | 역할 |
@@ -123,6 +138,6 @@ Wikipedia 본문은 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.
 
 ## Git 작성자와 GitHub 권한
 
-현재 PC의 확인된 설정은 `user.name=NIGHTPURI`, `user.email=127381985+NIGHTPURI@users.noreply.github.com`입니다. 작성자 설정은 변경하지 않았습니다. 후속 사용자 승인에 따라 이 작성자 정보로 로컬 커밋을 작성합니다. 기존 Git Credential Manager 인증도 NIGHTPURI로 확인했으나, 원본 저장소의 `permissions.push=false`여서 원격 push는 시도하지 않았습니다. PR·fork·원격 변경은 하지 않았습니다.
+현재 PC의 확인된 설정은 `user.name=NIGHTPURI`, `user.email=127381985+NIGHTPURI@users.noreply.github.com`입니다. 작성자 설정은 변경하지 않았습니다. 최초 점검에서는 `permissions.push=false`여서 push를 보류했습니다. 이후 사용자의 공동 작업자 초대 수락과 명시적 승인에 따라 기존 NIGHTPURI 인증으로 [구현 커밋 `34fa429`](https://github.com/ahra1221/AICoreProject/commit/34fa4295dc6d0e15ff4846f95c63d9da13d729cd)을 원본 저장소 `master`에 정상 push했고 원격 SHA 일치를 확인했습니다. PR·fork·원격 변경은 하지 않았습니다. `docs/evidence/github-permission.json`은 최초 권한 점검 당시의 기록입니다.
 
 `git user.name/email`은 커밋에 기록할 작성자 정보입니다. [GitHub 계정명과 동일한 개념이 아니며](https://docs.github.com/en/get-started/git-basics/setting-your-username-in-git), [GitHub 인증](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github)과 원격 저장소 쓰기 권한은 별도입니다. 다른 사람의 이름·이메일을 알거나 설정하는 것으로 로그인 또는 push 권한이 생기지 않습니다. 본인의 작성자 정보를 사용하고, 공동 작업 권한이나 본인 fork 경로는 저장소 소유자와 별도로 정해야 합니다.

@@ -30,6 +30,11 @@
 
 ## 브라우저 화면 증빙
 
-- `evidence/13_empty_index.jpg`: 실제 8521 초기 화면, 키/색인 없음 안내.
-- `evidence/13_missing_key.jpg`: 조건 탐색 요청 후 키 없음 안내, 모델 호출 없음.
-- 전체 질문/진행/최종 답변 캡처는 별도 키·예산이 없어 미완료입니다.
+[실제 캡처 4장 보기](screenshots.md) · [목록·SHA-256](evidence/screenshots.json)
+
+- [색인 없음](evidence/13_empty_index.jpg): 기존 실제 8521 초기 안내.
+- [키 없음](evidence/13_missing_key.jpg): 기존 조건 탐색 제출 후 안내, 모델 호출 없음.
+- [출처·이용 조건](evidence/24_sources_license.jpg): 추가 캡처, TMDB·위키백과·CC BY-SA 4.0 표시.
+- [Top-k 3](evidence/06_top_k3.jpg): 추가 캡처, 5→3 변경 후 5로 복구. 설정 UI 확인만 해당.
+
+README·테스트 결과표·셀프 체크리스트·대조표에서 동일한 화면 증빙을 참조합니다. 실제 질문/진행/최종 답변 캡처는 별도 키·예산이 없어 미완료입니다. 학생 상호 평가 판정은 변경하지 않았습니다.

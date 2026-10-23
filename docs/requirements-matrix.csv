@@ -4,25 +4,25 @@
 3,F2003/F2004,미확인,offline-flow.json; wikipedia-api.json,모의 P1/P2 및 실 API 수집 검증 완료. 실제 LLM P1/P2는 키·예산 미설정으로 미실행
 4,F2004/NF2002,미확인,offline-flow.json; wikipedia-api.json,모의 동일 질문의 P1/P2 재호출 없음·실 API 반복 HTTP 0회 확인. 실제 LLM 질문 화면 미실행
 5,F2005,통과,local-index.json,실제 로컬 재색인: chunk/overlap 120/20의 12청크 → 400/40의 4청크
-6,F2006,통과,offline-flow.json,동일 질문·실제 로컬 검색의 Top-k 1/3: 외부 1/3건(메타데이터 1건 별도). 테스트 벡터 사용
+6,F2006,통과,offline-flow.json; 06_top_k3.jpg,로컬 모의 검색 Top-k 1/3 외부 1/3건(메타데이터 별도). 실제 앱 설정 5→3→5 확인; 모델 검색 결과 변화는 미실행
 7,F2007,통과,graph.mmd; offline-flow.json,실행 노드 retrieve/generate 확인. START/END는 경계
 8,F2008,미확인,offline-tests.txt; offline-flow.json,번호·출처 매핑 자동 검증 완료. 실제 생성 답변의 화면 대조 미실행
 9,F2007/F2008,미확인,offline-tests.txt,무근거·잘못된 인용 차단 확인. 실제 LLM의 의미상 환각 억제는 미검증
 10,F2009,미확인,offline-tests.txt,movie_id별 대화 분리 함수 통과. 두 영화의 실제 질문 UI 전환 미실행
-11,F2011,미확인,offline-tests.txt,실제 964편으로 연도·장르·감독 필터 통과. 실제 임베딩 조건탐색 UI 미실행
+11,F2011,미확인,offline-tests.txt; 13_missing_key.jpg,로컬 964편 조건 필터 통과. 실제 조건 탐색 제출은 키 없음으로 차단됨; 임베딩 검색 결과 UI 미확인
 12,F2010,미확인,../rag-design.md,사실검증 프롬프트·근거 경로 유지. 실제 모델 사실검증 미실행
-13,F2012,미확인,ui-guidance.json,키 없음·색인 없음 UI 자동 실행 확인. 실제 질문 진행 화면은 미확인
+13,F2012,미확인,ui-guidance.json; 13_empty_index.jpg; 13_missing_key.jpg,실제 브라우저의 키 없음·색인 없음 안내 캡처 확인. 실제 질문 진행 화면은 미확인
 14,F2012,해당없음,../requirements.md,일반 영화 도메인으로 건강·금융 판단 기능 없음
 15,F2013,해당없음,../requirements.md,별도 HTML/CSS/JS UI 심화 선택하지 않음
 16,F2014,해당없음,../requirements.md,MMR 심화 선택하지 않음
 17,F2015,해당없음,../requirements.md,RAG 유무 비교 심화 선택하지 않음
 18,F2015,해당없음,../requirements.md,RAG 유무 비교 심화 선택하지 않음
-19,F2016,미확인,offline-flow.json,TMDB/Wikipedia 종류 보존 확인. 실제 답변 UI 최종 점검 미실행
+19,F2016,미확인,offline-flow.json; 24_sources_license.jpg,실제 출처 패널에서 TMDB/Wikipedia 구분 확인. 생성 답변의 개별 근거 번호·출처 UI는 미확인
 20,NF2001,미확인,offline-flow.json,모의 첫/두 번째 시간만 기록. 실제 LLM 서비스 시간 및 사용성 미확인; 임의 제한시간 없음
 21,NF2003/NF2004,통과,ui-safe-error.json; security-scan.json,"고의 예외 UI 실행에서 상세정보 비노출, 소스/문서 정적 키 검사. 학생의 최종 환경 점검은 별도"
 22,NF2005,통과,../rag-design.md,수집·색인·검색·생성·UI 모듈 분리 확인
 23,NF2006,통과,offline-tests.txt; wikipedia-api.json,직렬 간격/헤더/재시도/maxlag/Retry-After 코드·모의 검증 및 실 API 성공
-24,NF2007,통과,../../README.md,TMDB/Wikipedia 출처·이용조건·원문/판본 표시 기록
+24,NF2007,통과,../../README.md; 24_sources_license.jpg,실제 앱 출처 패널에서 TMDB·위키백과·CC BY-SA 4.0 및 평문 추출·청킹 안내 확인
 25,필수,미확인,../test-results.md,유료 모델 실제 실행과 학생 직접 점검 미완료로 전체 필수 합격 주장하지 않음
-26,필수,미확인,../submission.md,초기 안내 화면 캡처만 가능. 실제 질문·사실검증 등 모든 필수 캡처는 미완료
+26,필수,미확인,../screenshots.md; screenshots.json,실제 캡처 4장(안내 2·출처 1·설정 1) 연결. 질문·진행·사실검증·최종 답변 등 전체 필수 캡처는 미완료
 27,필수,통과,../submission.md,요구사항 정의·설계·소스·README·대조표·결과표·체크리스트 포함. 상호 평가는 미실시로 표시

@@ -1,0 +1,78 @@
+{
+  "reviewed_at_utc": "2026-10-23T06:48:59.779975+00:00",
+  "url": "http://127.0.0.1:8521/",
+  "browser": "dedicated local PC in-app browser tab",
+  "base_commit": "34fa4295dc6d0e15ff4846f95c63d9da13d729cd",
+  "retained_screenshots": 2,
+  "new_screenshots": 2,
+  "total_screenshots": 4,
+  "paid_api_calls": 0,
+  "application_code_changed": false,
+  "screenshots_edited": false,
+  "other_tabs_or_processes_modified": false,
+  "top_k_restored_to": 5,
+  "privacy_review": "All four images visually reviewed: no API key values, personal information, or private conversations visible. Configuration names such as GMS_KEY are labels only.",
+  "screenshots": [
+    {
+      "file": "13_empty_index.jpg",
+      "sha256": "7d111c5d41de825de0c2a98ea74fe7b6afb71cf530120faf8d935288e72a4744",
+      "bytes": 39111,
+      "origin": "retained existing actual browser capture",
+      "captured_at_utc": null,
+      "checklist_rows": [
+        13,
+        26
+      ],
+      "observed": "영화 질문 초기 화면의 색인 없음·키 설정 안내",
+      "limit": "실제 질문·수집·답변 성공을 검증하지 않음"
+    },
+    {
+      "file": "13_missing_key.jpg",
+      "sha256": "2036519f057ca896834355eaf59d75378f14b01cbb96c3b457c2dc86826b4475",
+      "bytes": 52365,
+      "origin": "retained existing actual browser capture",
+      "captured_at_utc": null,
+      "checklist_rows": [
+        11,
+        13,
+        26
+      ],
+      "observed": "자연어 조건 입력 후 임베딩 API 키 없음 안내",
+      "limit": "키가 없어 요청이 차단됨. 검색 결과 성공을 검증하지 않음"
+    },
+    {
+      "file": "24_sources_license.jpg",
+      "sha256": "d67ebfb0143fd9cf4dec1e41eeb6965a7f29de29c30f83f941bf9c154185fe51",
+      "bytes": 56734,
+      "origin": "new actual browser capture",
+      "captured_at_utc": "2026-10-23T06:45:21.012416+00:00",
+      "checklist_rows": [
+        19,
+        24,
+        26
+      ],
+      "observed": "자료 출처 패널의 TMDB·한국어 위키백과·CC BY-SA 4.0 안내",
+      "limit": "개별 생성 답변의 근거 번호·판본 링크는 미확인"
+    },
+    {
+      "file": "06_top_k3.jpg",
+      "sha256": "2e915d80bdc387cc0e834d0364ae7d4acabde3979866508afa2d4904dcf67aca",
+      "bytes": 57436,
+      "origin": "new actual browser capture",
+      "captured_at_utc": "2026-10-23T06:45:37.520782+00:00",
+      "checklist_rows": [
+        6,
+        26
+      ],
+      "observed": "Top-k 표시값 5→3 변경. 촬영 후 5로 복구 확인",
+      "limit": "설정 UI만 확인. 실제 모델·벡터 검색 결과 비교는 미실행"
+    }
+  ],
+  "unverified": [
+    "real GMS P1/P2 and embeddings",
+    "generated answers and fact checking",
+    "real question progress",
+    "generated answer citations and per-movie conversation switching",
+    "student peer review"
+  ]
+}
